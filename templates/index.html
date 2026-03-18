@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - [Your Name]</title>
+    <style>
+        /* Base Styles - based on the provided image */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3e8; /* Light cream background */
+            color: #333333; /* Dark gray text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A clean font */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Menu Bar - mimicking the structure of the provided image */
+        header {
+            background-color: #373f47; /* Dark slate-gray background from header in picture */
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 20px;
+            margin-right: 20px; /* Aligns links to the right of the home icon area */
+        }
+
+        .menu-links a {
+            color: #ffffff; /* White text for links in dark header */
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .menu-links a:hover {
+            opacity: 0.7;
+        }
+
+        .home-icon-container {
+            /* Placeholder for future home icon or branding */
+        }
+
+        /* Home Icon on the Right (using a placeholder 'H') */
+        .home-icon {
+            font-size: 24px;
+            color: #ffffff;
+            margin-left: auto; /* Pushes the icon to the absolute left of its container, making it far right overall */
+        }
+
+        /* Main Body - Left Text, Right Image/Caption */
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Left Content Column */
+        .content-left {
+            flex: 1;
+            padding: 20px 40px;
+            text-align: right;
+            border-right: 2px solid rgba(136, 136, 136, 0.2); /* A faint vertical line similar to the image's structure */
+        }
+
+        .content-left h1 {
+            font-size: 48px;
+            color: #373f47; /* Same dark color from header */
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .content-left p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4a5561;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-list li {
+            position: relative;
+            padding-right: 25px; /* Space for the custom bullet */
+            color: #4a5561;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: #ff9900; /* Mustard yellow bullet color from picture's accents */
+            position: absolute;
+            right: 0;
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        /* Right Column - Picture and Caption */
+        .content-right {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Stylized Image Container - replicating the retro photo corner style */
+        .image-container {
+            width: 80%; /* Takes up most of the right column width */
+            padding: 20px;
+            background-color: #ffffff; /* White polaroid background */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Replicating the distinct photo corner tabs */
+        .image-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #555555;
+            z-index: 10;
+        }
+
+        .corner-top-left { top: -2px; left: -2px; border-bottom: none; border-right: none; }
+        .corner-top-right { top: -2px; right: -2px; border-bottom: none; border-left: none; }
+        .corner-bottom-left { bottom: -2px; left: -2px; border-top: none; border-right: none; }
+        .corner-bottom-right { bottom: -2px; right: -2px; border-top: none; border-left: none; }
+
+        .image-placeholder {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1; /* Keep it square like the image */
+            background-color: #f7f3e8; /* Cream base color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #373f47;
+            border: 1px solid #ddd;
+        }
+
+        /* Caption Text - centered and stylized like in the image */
+        .caption-sentence {
+            width: 80%; /* Matching the image container width */
+            font-size: 16px;
+            line-height: 1.5;
+            color: #4a5561;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic; /* A bit more descriptive like the picture */
+        }
+
+        /* Geometric Accents - for that retro feel */
+        .main-accent-triangle {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background-color: #fdd863; /* Mustard yellow from picture's right-side accent */
+            clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .main-accent-lines {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #555555; /* The gray linear accent from picture's left side */
+            clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+            z-index: -2;
+            opacity: 0.2;
+        }
+
+        .image-placeholder img {
+            width: 100%;       /* Fills the width of the white box */
+            height: 100%;      /* Fills the height of the white box */
+            object-fit: cover; /* This is the "magic": it crops the image to fit without stretching it */
+            display: block;    /* Removes extra bottom spacing */
+        }
+
+        /* Ensure the container has a set size to hold the image */
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Makes it a perfect square like the photo in your sample */
+            overflow: hidden;    /* Keeps the image inside the corners */
+        }
+
+        /* Media Queries for Mobile responsiveness */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column-reverse; /* Put picture above text on mobile */
+                padding: 20px;
+            }
+
+            .content-left {
+                border-right: none;
+                border-top: 2px solid rgba(136, 136, 136, 0.2);
+                padding: 20px 0;
+            }
+
+            .content-left h1 {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            .content-left p {
+                text-align: center;
+            }
+
+            .skill-list {
+                align-items: center;
+            }
+
+            .image-container, .caption-sentence {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-accent-triangle"></div>
+    <div class="main-accent-lines"></div>
+
+    <header>
+        <div class="header-content">
+             <div class="home-icon-container">
+                <a href="index.html" class="home-icon">&#x2302;</a> </div>
+            <div class="menu-links">
+                <a href="about.html">אודות</a>
+                <a href="pictures.html">תמונות</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-left">
+            <h1>אודותיי</h1>
+            
+            <p>היי! אני יוצר סקרן ובעל תשוקה לעולם הדיגיטל. כאן תוכלו למצוא מידע קצר על המסע שלי ועל הדברים שאני נהנה לעשות.</p>
+            
+            <p>בניית דברים חדשים, בין אם אלו ממשקים מעוצבים או ניתוח נתונים, היא מה שמעניק לי השראה. דף זה נמצא כרגע בתהליכי בנייה, אבל אתם מוזמנים לחקור!</p>
+            
+            <p>הנה כמה מהמיומנויות שלי:</p>
+            
+            <ul class="skill-list">
+                <li>פיתוח ממשקי משתמש (HTML & CSS)</li>
+                <li>פתרון בעיות טכניות</li>
+                <li>חשיבה יצירתית</li>
+                <li>למידה מתמדת של טכנולוגיות חדשות</li>
+            </ul>
+        </div>
+
+        <div class="content-right">
+            <div class="image-container">
+                <div class="image-corner corner-top-left"></div>
+                <div class="image-corner corner-top-right"></div>
+                <div class="image-corner corner-bottom-left"></div>
+                <div class="image-corner corner-bottom-right"></div>
+                
+                <div class="image-placeholder">
+                    <img src="/static/subject-pic.jpg" alt="Subject Profile" />
+                </div>
+            </div>
+
+            <div class="caption-sentence">
+                &ldquo;תמונה אחת מספרת אלף מילים על החיוך והאהבה שלי ליצירה ולתגליות חדשות.&rdquo;
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
